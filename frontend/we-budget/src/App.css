@@ -1,0 +1,10 @@
+.budget-wrapper {
+  list-style: none;
+  padding: 0px;
+}
+
+.budget-category-header{
+  background-color: #4dabf5;
+  padding: 10px;
+  color: white;
+}
