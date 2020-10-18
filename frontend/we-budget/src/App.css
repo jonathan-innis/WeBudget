@@ -1,3 +1,9 @@
+.budget-table {
+  margin: 50px;
+  width: 100%;
+  text-align: left;
+}
+
 .budget-wrapper {
   list-style: none;
   padding: 0px;
@@ -8,3 +14,4 @@
   padding: 10px;
   color: white;
 }
+
