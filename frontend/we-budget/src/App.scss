@@ -1,0 +1,16 @@
+$default-p-font-size: 14px;
+$dark-primary: #263238;
+$dark-secondary: #37474f;
+
+html {
+  font-size: $default-p-font-size;
+  background-color: $dark-primary;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}

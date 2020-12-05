@@ -1,5 +1,6 @@
 import React from "react";
 import Budget from './Budget';
+import "./App.scss";
 import {
   BrowserRouter as Router,
   Switch,
@@ -39,7 +40,9 @@ function Budgets() {
   return (
       <Switch>
         <Route path={`${match.path}/:budgetId`}>
-          <Budget />
+          <div class="app-wrapper">
+            <Budget />
+          </div>
         </Route>
         <Route path={match.path}>
           <h3>Please select a topic.</h3>
