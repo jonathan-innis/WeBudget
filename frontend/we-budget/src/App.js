@@ -41,6 +41,7 @@ function Budgets() {
       <Switch>
         <Route path={`${match.path}/:budgetId`}>
           <div class="app-wrapper">
+            <div style={{width: '300px'}}/>
             <Budget />
           </div>
         </Route>

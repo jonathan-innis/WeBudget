@@ -1,7 +1,4 @@
-$default-table-padding: 40px;
-$dark-primary: #263238;
-$dark-secondary: #37474f;
-
+@import './colors.scss';
 
 .budget-table {
     width: 100%;
@@ -58,15 +55,15 @@ p {
     }
 
     .budget-amount-positive {
-        background-color: #b5e08a;
+        background-color: $positive-budget;
     }
     
     .budget-amount-negative {
-        background-color: #F44336;
+        background-color: $negative-budget;
     }
     
     .budget-amount-neutral {
-        background-color: #BDBDBD;
+        background-color: $neutral-budget;
     }
 }
 
@@ -82,11 +79,49 @@ p {
 }
 
 .budget-custom-input:hover, .budget-custom-input:focus {
-    border: 1px solid rgb(85, 199, 252);
+    border: 1px solid $accent-primary;
     outline: none;
 }
 
 .budget-amount-budgeted-header {
     text-align: right;
     padding: 0 $default-table-padding + 10px !important;
+}
+
+.top-bar-wrapper {
+    p {
+        display: inline-block;
+        font-size: 12px;
+        margin: 0px 0 0 5px;
+        color: $accent-primary;
+    }
+    .plus-icon {
+        color: $accent-primary;
+    }
+
+    .add-category-wrapper {
+        cursor: pointer;
+    }
+}
+
+.line-item-name-wrapper {
+    &:hover {
+        .plus-icon {
+            opacity: 1;
+        }
+    }
+    .plus-icon {
+        color: $accent-primary;
+        margin-left: 10px;
+        opacity: 0;
+        cursor: pointer;
+    }
+}
+
+.tooltip-name-opener {
+    cursor: pointer;
+    
+    &:hover {
+        text-decoration: underline;
+    }
 }
