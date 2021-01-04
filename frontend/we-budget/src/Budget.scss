@@ -89,6 +89,10 @@ p {
 }
 
 .top-bar-wrapper {
+    td {
+        padding: 10px ;
+        text-align: left !important;
+    }
     p {
         display: inline-block;
         font-size: 12px;
@@ -101,6 +105,7 @@ p {
 
     .add-category-wrapper {
         cursor: pointer;
+        text-align: left;
     }
 }
 

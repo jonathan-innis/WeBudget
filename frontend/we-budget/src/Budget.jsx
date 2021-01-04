@@ -133,6 +133,9 @@ function TopBar(props) {
                     </div>
                 </Tooltip>
             </td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
     );
 }

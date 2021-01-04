@@ -1,5 +1,6 @@
 import React from "react";
 import Budget from './Budget';
+import AccountBar from './Account';
 import "./App.scss";
 import {
   BrowserRouter as Router,
@@ -41,7 +42,9 @@ function Budgets() {
       <Switch>
         <Route path={`${match.path}/:budgetId`}>
           <div class="app-wrapper">
-            <div style={{width: '300px'}}/>
+            <div style={{width: '400px'}}>
+              <AccountBar/>
+            </div>
             <Budget />
           </div>
         </Route>
