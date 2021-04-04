@@ -1,5 +1,7 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef, useEffect, useContext} from 'react';
 import './Tooltip.scss';
+
+const TooltipContext = React.createContext();
 
 export function Tooltip(props) {
     const [active, setActive] = useState(false);
@@ -8,6 +10,11 @@ export function Tooltip(props) {
     const handleClick = (event) => {
         if (active && node.current.contains(event.target)) return;
         setActive(false);
+    }
+
+    function close() {
+        setActive(false);
+        console.log(active);
     }
 
     useEffect(() => {
@@ -19,20 +26,24 @@ export function Tooltip(props) {
     }, [active])
 
     return (
-        <div className="tooltip-wrapper"
-             onClick={() => setActive(true)}
-        >
-            {props.children}
-            {active && (
-                <div className='tooltip-tip bottom' ref={node}>
-                    {props.content}
-                </div>
-            )}
-        </div>
+            <div className="tooltip-wrapper"
+                onClick={() => setActive(true)}
+            >
+                {props.children}
+                <TooltipContext.Provider value={{close}}>
+                {active && (
+                    <div className='tooltip-tip bottom' ref={node}>
+                            {props.content}
+                    </div>
+                )}
+                </TooltipContext.Provider>
+            </div>
     )
 }
 
 export function EditLineItemInnerTooltip(props) {
+    const {setActive} = useContext(TooltipContext);
+
     return(
         <div className="inner-tooltip-wrapper">
             <input
@@ -46,8 +57,8 @@ export function EditLineItemInnerTooltip(props) {
                     <button className="delete">Delete</button>
                 </div>
                 <div className="button-container">
-                    <button>Cancel</button>
-                    <button className="accent">OK</button>
+                    <button onClick={() => setActive(false)}>Cancel</button>
+                    <button className="accent" onClick={() => setActive(false)}>OK</button>
                 </div>
             </div>
         </div>
@@ -55,14 +66,17 @@ export function EditLineItemInnerTooltip(props) {
 }
 
 export function AddCategoryInnerTooltip(props) {
+    const {close} = useContext(TooltipContext);
+
     return(
         <div className="inner-tooltip-wrapper">
             <input
                 className="tooltip-custom-input"
                 type="text"
+                defaultValue={props.name}
             />
             <div className="button-end">
-                <button>Cancel</button>
+                <button onClick={() => close}>Cancel</button>
                 <button>Ok</button>
             </div>
         </div>

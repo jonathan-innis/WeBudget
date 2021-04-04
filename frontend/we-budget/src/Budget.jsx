@@ -149,7 +149,7 @@ function Category(props) {
         <React.Fragment key={data._id}>
             <tr className="budget-header-wrapper budget-category-header-wrapper">
                 <th className="line-item-name-wrapper">
-                    <Tooltip content={<EditLineItemInnerTooltip name={data.name}/>}>
+                    <Tooltip content={<AddCategoryInnerTooltip name={data.name}/>}>
                         <p className="tooltip-name-opener">{data.name}</p>
                     </Tooltip>
                     <FontAwesomeIcon className="plus-icon" icon={faPlusCircle} onClick={() => props.insertLineItem(props.index)}/>
@@ -178,6 +178,14 @@ function Category(props) {
             </tr>
             )}
         </React.Fragment>
+    )
+}
+
+function EditLineItem(props) {
+    return (
+        <Tooltip content={<EditLineItemInnerTooltip name={props.name}/>}>
+            <p className="tooltip-name-opener">{props.name}</p>
+        </Tooltip>
     )
 }
 

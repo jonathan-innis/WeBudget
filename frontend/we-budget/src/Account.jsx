@@ -1,7 +1,8 @@
-import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCaretUp, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, {useState} from "react";
 import "./Account.scss";
+import Modal from "./Modal";
 
 let accountData = {
     "accounts" : [
@@ -46,6 +47,87 @@ let accountData = {
                     "accountValue": 1000
                 }
             ]
+        },
+        {
+            "name": "Closed",
+            "isHidden": false,
+            "items": [
+                {
+                    "_id": "5f8248d14f642b1de56daa18",
+                    "name": "Vanguard Brokerage",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa19",
+                    "name": "Vanguard Roth IRA",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa20",
+                    "name": "Fidelity 401K",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa18",
+                    "name": "Vanguard Brokerage",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa19",
+                    "name": "Vanguard Roth IRA",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa20",
+                    "name": "Fidelity 401K",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa18",
+                    "name": "Vanguard Brokerage",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa19",
+                    "name": "Vanguard Roth IRA",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa20",
+                    "name": "Fidelity 401K",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa18",
+                    "name": "Vanguard Brokerage",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa19",
+                    "name": "Vanguard Roth IRA",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa20",
+                    "name": "Fidelity 401K",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa18",
+                    "name": "Vanguard Brokerage",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa19",
+                    "name": "Vanguard Roth IRA",
+                    "accountValue": 1000
+                },
+                {
+                    "_id": "5f8248d14f642b1de56daa20",
+                    "name": "Fidelity 401K",
+                    "accountValue": 1000
+                }
+            ]
         }
     ]
 }
@@ -60,7 +142,9 @@ const mockUpdateHidden = (accountName, newState) => {
 }
 
 export default function AccountBar() {    
-    console.log(accountData)
+    const [isOpenModal, setOpenModal] = useState();
+
+
     return (
         <>
             <table>
@@ -70,6 +154,16 @@ export default function AccountBar() {
                     )
                 }
             </table>
+            <button onClick={() => setOpenModal(true)}>Add Account</button>
+            <Modal 
+                isOpen={isOpenModal}
+                maxWidth={'400px'}
+            >
+                <FontAwesomeIcon className="modal-closer" icon={faTimes} size='lg' onClick={() => setOpenModal(false)}/>
+                <h2>Add Account</h2>
+                <hr></hr>
+                <AccountCreationFlow/>
+            </Modal>
         </>
     )
 }
@@ -108,4 +202,31 @@ function AccountDropDown(props) {
             }
         </>
     )
+}
+
+function AccountCreationFlow(props) {
+    const [pageNum, setPage] = useState(0);
+
+    if (pageNum == 0) {
+        return (
+            <div>
+                <p style={{marginBottom: '30px'}}>Let's go! And don't worry--if you change your mind, you can link your account at any time.</p>
+                <form>
+                    <label for="cars">Choose a car:</label>
+                    <select id="cars" name="cars">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="fiat">Fiat</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <input></input>
+                    <input></input>
+                </form>
+            </div>
+        )
+    } else if (pageNum == 1) {
+        return (
+            <div></div>
+        )
+    }
 }

@@ -1,6 +1,6 @@
+@import './colors.scss';
+
 $default-p-font-size: 14px;
-$dark-primary: #263238;
-$dark-secondary: #37474f;
 
 html {
   font-size: $default-p-font-size;
@@ -17,4 +17,11 @@ html {
 
 .app-wrapper {
   display: flex;
+}
+
+.account-bar-wrapper {
+  width: 400px;
+  overflow: scroll; 
+  overflow-x:hidden;
+  height: 100vh;
 }

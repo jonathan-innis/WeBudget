@@ -1,3 +1,5 @@
+@import './colors.scss';
+
 table {
     padding: 10px;
     color: white;
@@ -26,5 +28,29 @@ table {
             cursor: pointer;
         }
 
+    }
+}
+
+.modal-wrapper {
+    h2 {
+        margin: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    hr {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+    }
+
+    .modal-closer {
+        color: $accent-primary;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
     }
 }
