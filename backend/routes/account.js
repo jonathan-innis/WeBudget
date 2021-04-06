@@ -36,7 +36,6 @@ router.get('/:accountId', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
     try{
-        const userId = req.params.userId
         const account = await Account.create({
             name: req.body.name,
             type: req.body.type,

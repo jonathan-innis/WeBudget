@@ -55,4 +55,37 @@ router.post('/', async (req, res, next) => {
     }
 });
 
+router.put('/:budgetId', async (req, res, next) => {
+    try {
+        const {userId, budgetId} = req.params;
+
+        const user = await User.findById(userId);
+        const budget = await user.budgets.id(budgetId);
+
+        budget.set(req.body);
+        const savedUser = await user.save();
+        console.log(savedUser);
+        const savedBudget = await savedUser.budgets.id(budgetId);
+        res.send(savedBudget);
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.delete('/:budgetId', async (req, res, next) => {
+    try {
+        const {userId, budgetId} = req.params;
+
+        await User.findByIdAndUpdate(userId, {
+            '$pull': {
+                'budgets': { '_id': budgetId }
+            }
+        });
+        res.sendStatus(200);
+    } catch (err) {
+        console.log(err);
+        next(err);
+    }
+})
+
 module.exports = router;

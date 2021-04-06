@@ -5,16 +5,6 @@ const { BadRequest, NotFound } = require('../utils/errors');
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
-    try {
-        const users = await User.find();
-        return res.send(users);
-    } catch (err) {
-        console.log(err);
-        next(err);
-    }
-})
-
 router.get('/:userId', async (req, res, next) => {
     try {
         const userId = req.params.userId;
@@ -50,6 +40,6 @@ router.post('/', async(req, res, next) => {
         console.log(err);
         next(err);
     }
-})
+});
 
 module.exports = router;
